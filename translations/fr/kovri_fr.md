@@ -2,9 +2,21 @@ Kovri Lightweight C++ I2P Router Script
 
 Version 1 français- sgp / cryptochangements
 
-Jusqu'à ce point, cette série a  discuté de la façon dont Monero obscurcit l'information qui est stocké sur le blockchain. Pourtant, information personnel peut-être divulgée en essayant d'annoncer sa transaction au réseau.
+Monero est une monnaie électronique sécurisée et intraçable.  Elle est open-source, décentralisée et facilement accessible pour tous.
 
-Supposons qu'Alice voudrait envoyer une transaction à Bob. Elle prépare la transaction Monero sur son ordinateur, et elle est prête à dire au réseau de nœuds et mineurs qu'elle voudrait que le réseau inclut sa transaction dans le prochain bloc.
+Dans ce vidéo, nous allons parler d'une technologie d'anonymat appelée Kovri.
+
+Jusqu'à maintenant, cette série a présenté la façon dont Monero obscurcit l'information stockée sur le blockchain.
+Les bagues de signatures obscurcissent l'expéditeur, les adresses furtives préviennent les observateurs extérieurs de découvrir l'adresse de destination, et les bagues de transactions confidentielles cachent le nombre de Monero transmis.
+Par contre, quelques informations personnelles et identifiables peuvent être divulgées lorsqu'une transaction est annoncée au réseau.
+
+Cette fuite d'information privé est colmatée avec Kovri.  
+
+Kovri est une technologie d'anonimat gratuite, décentralisée, fondée sur les spécifications ouverte de I2P.  Kovri utilise du cryptage ainsi que des techniques d'acheminement sophistiquées pour créer un revêtement privé sur le réseau internet.  Ce revêtement de protection permet aux utilisateurs de cacher leurs positions géographiques et leurs adresses IP.  Une adresse ip est comme une adresse domiciliaire mais pour internet.  Il s'agit donc , à tout de moins, d'une information très délicate. 
+
+Examinons maintenant quelques scénarios pour voir comment cette modeste application de sécurité aide à renforcer l'anonymat de ses utilisateurs. 
+
+Supposons qu'Alice voudrait envoyer une transaction à Bob. Le porte-monnaie d'Alice crée une transaction et la divulge sur le réseau Monero.  Le réseau Monero est constitué de noeuds qui communiquent ensemble en acheminant des messages à travers une séries d'adresses IP.  Ceci implique qu'il est possible de retraçer les données géographiquement, pendant qu'elles traversent l'internet, partout, entre le début et la fin de leurs parcours.  Même si les porte-monnaies des expéditeurs et des récipiendaires, ainsi que les montants demeurent privés, Alice prend un risque lorsqu'elle divulgue sa transaction, car certains noeuds pourrait noter les adresses IP.  Un adversaire bien nantis pourraient tenter d'associer des transactions avec des adresses IP afin de déterminer l'origine des transactions.  Ceci pourrait potentiellement permettre à l'adversaire d'empêcher le relai de ses transactions sur le réseaux ou encore pire, de se présenter à sa porte.   les expéditeurs et les récipiendaires sont anonymes une série de noeuds interconnectéAlice est , et elle est prête à dire au réseau de nœuds et mineurs qu'elle voudrait que le réseau inclut sa transaction dans le prochain bloc.
 
 Alice est connecté à pluseurs, mais pas tous, les nœuds du réseau. Sa requête de transaction va devoir atteindre autant de nœuds que possible pour avoir la plus grande chance d'être inclus dans le prochain bloc. Elle est connecté à 5 nœuds du réseau, elle envoie donc sa requête de transaction aux 5 nœuds. Le système continue comme ça jusqu'à beaucoup de nœuds ont cette donnée
 
