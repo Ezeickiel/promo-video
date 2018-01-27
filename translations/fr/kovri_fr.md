@@ -2,28 +2,53 @@ Kovri Lightweight C++ I2P Router Script
 
 Version 1 français- sgp / cryptochangements
 
-Jusqu'à ce point, cette série a  discuté de la façon dont Monero obscurcit l'information qui est stocké sur le blockchain. Pourtant, information personnel peut-être divulgée en essayant d'annoncer sa transaction au réseau.
+Le Monero est une monnaie électronique sécurisée et intraçable.  Il est open-source, décentralisé, et facilement accessible à tous.
 
-Supposons qu'Alice voudrait envoyer une transaction à Bob. Elle prépare la transaction Monero sur son ordinateur, et elle est prête à dire au réseau de nœuds et mineurs qu'elle voudrait que le réseau inclut sa transaction dans le prochain bloc.
+Dans cette vidéo, nous allons parler de la technologie d'anonymat appelée Kovri.
 
-Alice est connecté à pluseurs, mais pas tous, les nœuds du réseau. Sa requête de transaction va devoir atteindre autant de nœuds que possible pour avoir la plus grande chance d'être inclus dans le prochain bloc. Elle est connecté à 5 nœuds du réseau, elle envoie donc sa requête de transaction aux 5 nœuds. Le système continue comme ça jusqu'à beaucoup de nœuds ont cette donnée
+Jusqu'à maintenant, nous avons  démontré la façon dont Monero obscurcit l'information stockée sur le blockchain.
 
-Malheureusement, il y a toujours un peu de danger en envoyant sa requête. C'est possible que des nœuds du réseau enregistre l'adresse IP dont la requête vient. Une adresse IP est comme votre adresse de domicile, mais pour votre connexion internet. Un attaquant ne peut pas savoir si la première adresse IP qu'il a eu est la vraie adresse du envoyeur, et il ne peut pas savoir les détails de la transacion comme l'envoyeur, le montant, ou le récepteur. Pourtant, l'attaquant peut associer une transaction, comme la transaction qu'Alice a créé dans cet exemple, avec une adresse IP pour lui aider deviner l'envoyeur.
+Les bagues de signatures obscurcissent l'expéditeur, les adresses furtives préviennent les observateurs externes de découvrir l'adresse de destination, et les bagues de transactions confidentielles cachent le nombre de Monero transmis.
+Par contre, quelques informations personnelles et identifiables peuvent être divulguées lorsqu'une transaction est annoncée sur le réseau.
 
-Un attaquant peut donc frapper à la porte d'Alice et exiger qu'Alice lui donne ses clés privées pour qu'il peut enquêter. Alternativement, l'attaquant peut essayer de bloquer les transactions d'Alice d'être transmis au réseau. On appel ce genre d'attaque une "Attaque Sybil"
+Ce problème de fuite d'information privée est colmaté avec la venue de Kovri.  
 
-Qu'est-ce qu'on peut faire pour atténuer ce problème? Alice ne sait pas quels nœuds enregistrent sa adresse IP, donc elle ne peut pas éviter ces mouvais nœuds. Son seul choix est de cacher sa adresse IP.
+Kovri est une technologie d'anonymat gratuite, décentralisée, fondée sur les spécifications ouverte du protocole I2P.  Kovri utilise du cryptage ainsi que des techniques d'acheminement sophistiquées pour créer un revêtement privé sur le réseau internet.  Ce revêtement de protection permet aux utilisateurs de cacher leurs positions géographiques et leurs adresses IP.  Une adresse ip est comme une adresse domiciliaire sur internet.  Il s'agit donc , à tout de moins, d'une information très délicate. 
 
-Il existe pluseurs de façons de cacher votre adresse IP. On peut utiliser TOR, un VPN, ou I2P. Nous allons nous concentre sur I2P dans cette vidéo puisque c'est le réseau dont Kovri participe.
+Examinons maintenant quelques scénarios pour voir comment cette modeste application de sécurité aide à renforcer l'anonymat de ses utilisateurs. 
 
-Dans une seule phrase, Kovri est un routeur simple pour le réseau I2P qui est programmé en C++ et il est compatible avec des cryptomonnaies. I2P est une couche d'internet qui rend toutes les connexions dans le réseau privée. Au lieu de se connecter directement au réseau, comme un site du web, tout l'information est transmis aux autres routeurs du réseau I2P. Ces routeurs savent peu ou aucun détails sur la donnée qu'ils transmettent, du coup toute la donnée est privée.
+Supposons qu'Alice voudrait envoyer une transaction à Bob. Le porte-monnaie d'Alice crée une transaction et la divulgue sur le réseau Monero.  Le réseau Monero est constitué de nœuds qui communiquent ensemble en acheminant des messages à travers une série d'adresses IP.  Ceci implique qu'il est possible de retracer les données géographiquement, pendant qu'elles traversent l'internet, du début jusqu’à la fin de leurs routes.  Même si les porte-monnaie des expéditeurs ou ceux des récipiendaires demeurent privés, Alice prend un risque lorsqu'elle divulgue sa transaction, car certains nœuds pourraient enregistrer les adresses IP.  Un adversaire bien nantis pourrait tenter d'associer les transactions avec les adresses IP afin de déterminer l'origine des transactions.  Ceci pourrait potentiellement permettre à l'adversaire d'empêcher le relai de ses transactions sur le réseau ou, encore pire, de se présenter à sa porte.  
 
-Kovri sera intégré avec Monero dans des futures sorties et il sera activé par défaut pour annoncer les transactions aux réseau.
+Maintenant, imaginons un autre exemple. Supposons que Charlie veut supporter le réseau Monero en exploitant son propre un nœud chez lui.  Après quelques semaines, Charlie reçoit une note de bris de contrat, car l’exploitation de nœud violerait les termes de service de son fournisseur internet.
 
-Maintenant, quand Alice envoie sa requête de transaction travers le réseau I2P avec Kovri, personne ne pourra savoir sa adresse IP. Les nœuds du réseau Monero qui enregistre des adresses IP ne verra qu'une adresse .i2p qui ne sert à rien. Donc, si ces nœuds continuent à enregistrer des adresses IP, ce genre d'information ne sera plus utile.
+Ou considérez ceci: Supposons que Dave est responsable d’un bassin de mineur et qui fait don  d’une portion de ses gains à un parti politique ou à une cause controversée.  Les autres nœuds pourraient  délibérément refuser la résolution de ses blocks pour exprimer leur désaccord avec ses opinions politiques ou sociales.
 
-En outre, supposons qu'Alice a un fournisseur d'accès internet qui ne veut pas qu'elle utilise Monero. Alice peut choisir d'envoyer tout la donnée de Monero travers le réseau I2P. Maintenant, son fournisseur d'accès internet ne pourra pas savoir qu'elle utilise Monero.
+Alice, Bob, Charlie et Dave ont tous quelque chose en commun: leur adresses IP sont détectable sur le réseau.  Des usagers peuvent essayer de cacher leurs adresses IP avec des réseaux TOR ou des  réseau privé virtuel. Par contre, chacune de ces  stratégies ont des lacunes importantes. 
 
-Bref, Kovri est un routeur qui permet à utilisateurs de Monero de se connecter au réseau I2P pour qu'ils peuvent envoyer anonymement des requêtes de transaction. Des nœuds du réseau Monero ne pourra plus enregistrer les vrais adresses IP d'utilisateurs de Monero.
+Le réseau TOR est géré par des autorités dont la confiance laisse à désirer et qui allouent  à certains opérateur de nœuds TOR une influence démesurée dans le consensus du réseau. Le consensus du réseau  détermine ultimement qui est autorisé à relayer le trafic dans le réseau TOR—et cela basé sur les opinions des autorités.
 
-Visitez getkovri.org pour en savoir plus sur Kovri, ou getmonero.org pour en savoir plus sur Monero
+Par ailleurs, les attaques de corrélations sont possibles auprès des réseaux privés virtuels fiables.  Une attaque nombreuse permettrait de facilement dé-anonymiser le trafic d’un utilisateur.
+
+Alors, qu’est-ce  qu’Alice, Bob, Charlie et Dave peuvent faire pour  atténuer ces menaces?  Ils peuvent utiliser Kovri. 
+S’ils utilisent exclusivement Kovri sur le réseau Monero, personne ne pourra détecter leurs adresses ips, rendant la surveillance passive impraticable tout en améliorant substantiellement la résistance du Monero à la censure.
+
+Comme vous voyez, Kovri est une application qui permet à ses utilisateurs de transmettre leurs transactions de façon encore plus anonyme.
+
+Plongeon maintenant dans les technicalités afin de voir ce qui se cache sous le capot de la technologie Kovri.
+
+Kovri dirige le trafic dans le réseau I2P en utilisant du cryptage en bulbe d’ail et de l’acheminement en bulbe d’ail.  L’information voyage à l’intérieur d’un revêtement de réseau privé par l’entremise de message recevant une couche  d’encryptions  à chaque fois que le message est relayé par un pair dans le réseau. Comme une poupée russe. Chaque poupée interne contient un verrou et une clé publique pour la poupée suivante. Les pairs sur le réseaux sont incapable de lire le contenu du message relayé, ce qui rend  l’information envoyé par l’expéditeur, ou reçu par le destinataire,  tout à fait sécurisée.
+
+La seule information visible pour les pairs est l’instruction d’acheminement vers le prochain pair. 
+
+Pour atteindre une meilleure confidentialité, moyennant une petite baisse de performance, les utilisateurs sont capables de se connecter à d’autres pairs.  Essentiellement, Kovri masque le traffic internet  d’une application pour le rendre anonyme à l’intérieur du réseau.
+
+Avec ces caractéristiques, Kovri est une merveilleuse solution pour communiquer anonymement sur IRC, par e-mail, ou pour accéder à des services cachés.
+
+Kovri révolutionnera les connections pairs à pairs tout en renforçant la résilience et l’anonymat de réseau au niveau mondial.
+Les nœuds malicieux ne pourront plus menacer les utilisateurs qui crée des transactions, ou de  bloquer leur propagations à travers le réseau.
+
+Kovri sera inclus dans les prochaines sorties de Monero et sera activé par défaut.  De plus Kovri sera doté  d’un API  commun qui permettra à d’autres applications ou crypto-monnaie  de l’utiliser.  Pas juste le Monero.
+
+Pour connaître d’avantage sur le Monero ou sur le projet Kovri, veuillez consulter Getmonero.org et GetKovri.org
+
+
